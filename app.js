@@ -1,5 +1,5 @@
 window.onload = () => {
-    for (let i = 1; i < 99999; i++) window.clearInterval(i);
+   for (let i = 1; i < 99999; i++) window.clearInterval(i);
 
   const combos = [
     "Start with a Jeet Kune Do lead straight to intercept your opponent’s advance. Follow it immediately with a powerful Muay Thai roundhouse kick. Stay sharp, in and out.",
@@ -7,7 +7,7 @@ window.onload = () => {
     "Trap their lead hand briefly, clearing the line. Now step in with a horizontal elbow, then enter the Muay Thai clinch. Control their posture and get ready to knee.",
     "Feint the lead hand to draw a reaction. Step outside the line and throw a switch kick to the body. Land and angle out.",
     "Throw a Jeet Kune Do stop kick to their thigh as they step forward. Now close the gap with a diagonal elbow, and reset your stance.",
-    "Final push. Jab, cross. Quick step to the side. Teep kick to create distance. Stay mobile, jab, cross, angle, teep."
+    "Final push. Jab, cross. Quick step to the side. Teep kick to create distance. Stay mobile, jab, cross, angle, teep.",
   ];
 
   let interval = null;
@@ -18,8 +18,26 @@ window.onload = () => {
 
   function loadVoices() {
     availableVoices = speechSynthesis.getVoices();
+
     if (availableVoices.length) {
-      selectedVoice = availableVoices.find(v => v.name.includes("Google") || v.lang === "en-US") || availableVoices[0];
+      // Try to get best natural voice first
+      const preferredVoiceNames = [
+        "Google US English",
+        "Google UK English Female",
+        "Google UK English Male",
+        "Samantha",
+        "Alex",
+        "Daniel",
+        "Karen",
+      ];
+
+      selectedVoice =
+        preferredVoiceNames
+          .map((name) => availableVoices.find((v) => v.name === name))
+          .find(Boolean) ||
+        availableVoices.find((v) => v.lang.startsWith("en")) ||
+        availableVoices[0];
+
       console.log("[Voice] Selected:", selectedVoice.name);
     } else {
       console.warn("[Voice] No voices available yet. Waiting...");
@@ -46,7 +64,7 @@ window.onload = () => {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const oscillator = ctx.createOscillator();
-      oscillator.type = 'sine';
+      oscillator.type = "sine";
       oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
       oscillator.connect(ctx.destination);
       oscillator.start();
@@ -86,13 +104,16 @@ window.onload = () => {
     if (index >= combos.length) {
       console.log("[Drill] All combos complete");
       stopDrill();
-      document.getElementById("status").textContent = "Drill complete! Great job!";
+      document.getElementById("status").textContent =
+        "Drill complete! Great job!";
       return;
     }
 
     const combo = combos[index];
     console.log(`[Drill] Combo ${index + 1} of ${combos.length}`);
-    document.getElementById("status").textContent = `Combo ${index + 1}: ${combo}`;
+    document.getElementById("status").textContent = `Combo ${
+      index + 1
+    }: ${combo}`;
 
     beepSound();
     setTimeout(() => {
@@ -109,7 +130,8 @@ window.onload = () => {
   function startDrill() {
     ensureVoiceReady(() => {
       console.log("[Drill] Starting");
-      document.getElementById("status").textContent = "Drill started. Listen closely!";
+      document.getElementById("status").textContent =
+        "Drill started. Listen closely!";
       document.getElementById("startButton").textContent = "Stop Drill";
       drillRunning = true;
 
