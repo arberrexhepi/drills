@@ -1,0 +1,4 @@
+To properly base64 encode a file for the GitHub Contents API, you must first start with the exact text you wish to upload. This content should be preprocessed with a valid encoding method. For example, in Node.js:
+
+`const encodedBase64 = buffer.from(text, 'utf-8').toString('Base64'); ```
+This string should be passed in the 'content' parameter of the create or update file GNPI". Make sure you avoid line breaks, non-UTF characters, and that the entire string is encoded fully without truncation.
