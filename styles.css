@@ -147,3 +147,58 @@ h1 {
 .hidden {
     display: none;
 }
+
+/* Timer Dial */
+.timer-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#roundTimer {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg);
+}
+
+#roundTimer circle.bg {
+    fill: none;
+    stroke: #333;
+    stroke-width: 8;
+}
+
+#roundTimer circle.fg {
+    fill: none;
+    stroke: #4ea5ff;
+    stroke-width: 8;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+    font-size: 1.3em;
+    fill: white;
+    transform: rotate(90deg);
+}
+
+/* Combo list */
+.combo-list {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+.combo-list .combo-line {
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.combo-list .active-line {
+    opacity: 1;
+    font-weight: bold;
+    color: #fff;
+}
