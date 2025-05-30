@@ -1,38 +1,27 @@
 window.onload = () => {
    
-    for (let i = 1; i < 99999; i++) window.clearInterval(i);
+  for (let i = 1; i < 99999; i++) window.clearInterval(i);
 
-const comboSets = {
-  "Muay Thai – Attack (Using 5 Methods of JKD)": [
-    // 1. Single Direct Attack (SDA)
-    "From stance, deliver a single explosive rear roundhouse kick to the bag—no telegraph, full commitment.",
-    // 2. Attack By Combination (ABC)
-    "Jab to rear elbow, then a hard low kick. Reset. Keep it tight and fluid.",
-    // 3. Hand Immobilization Attack (HIA)
-    "Simulate trapping their guard with your lead hand (touch the bag), then step in with a sharp horizontal elbow. Follow with a right knee.",
-    // 4. Progressive Indirect Attack (PIA)
-    "Feint a low kick to shift their guard, then whip a high switch kick to the opposite side. Read the bag’s sway.",
-    // 5. Attack by Drawing (ABD)
-    "Step back slightly and lower your guard to bait the attack, then return with a fast teep to the bag’s center, followed by a cross and rear elbow."
-  ],
-
-  "Muay Thai – Defence": [
-    "Check the bag’s swing with a solid shin block. Return immediately with a cross to establish control.",
-    "Parry the imaginary jab and counter with a lead hook, then angle off and teep the bag to reset.",
-    "Slip right, step left. Throw a fast body hook. Pivot and regain center control.",
-    "Simulate catching a kick. Scoop with the rear hand and slam a hard low kick in return.",
-    "Cover high against a swing. Return fire with a horizontal elbow and reset."
-  ],
-
-  "Muay Thai – Footwork": [
-    "Circle left while jabbing the bag. At every third jab, drop in a low kick, then continue circling.",
-    "Forward shuffle step with double jab. Step back and teep to control distance.",
-    "Step offline diagonally, land a body cross. Step again and switch kick. Emphasize balance.",
-    "Pendulum step in with a jab, cross. Pendulum out with a switch teep to regain range.",
-    "Step right, jab. Step left, hook. Constant motion. Keep the bag centered but never stationary."
-  ]
-};
-
+  const comboSets = {
+    "Jeet Kune Do + Muay Thai Hybrid": [
+      "Start with a Jeet Kune Do lead straight to intercept your opponent’s advance. Follow it immediately with a powerful Muay Thai roundhouse kick. Stay sharp, in and out.",
+      "Use a flick jab to test their guard, then land a clean cross. As they react, chop their lead leg with a Muay Thai low kick. Jab, cross, low kick.",
+      "Trap their lead hand briefly, clearing the line. Now step in with a horizontal elbow, then enter the Muay Thai clinch. Control their posture and get ready to knee.",
+      "Feint the lead hand to draw a reaction. Step outside the line and throw a switch kick to the body. Land and angle out.",
+      "Throw a Jeet Kune Do stop kick to their thigh as they step forward. Now close the gap with a diagonal elbow, and reset your stance.",
+      "Final push. Jab, cross. Quick step to the side. Teep kick to create distance. Stay mobile, jab, cross, angle, teep.",
+    ],
+    "Boxing Fundamentals": [
+      "Start with a double jab followed by a right cross.",
+      "Slip to the outside and return with a hook to the body.",
+      "Duck under and counter with a shovel uppercut.",
+    ],
+    "Taekwondo Precision Kicks": [
+      "Chamber and snap a fast front kick.",
+      "Follow up with a spinning hook kick to the head.",
+      "Reset and throw a fast axe kick, then step off line.",
+    ],
+  };
 
   let selectedSetKey = null;
   let interval = null;
@@ -40,6 +29,8 @@ const comboSets = {
   let drillRunning = false;
   let availableVoices = [];
   let selectedVoice = null;
+  let timerInterval = null;
+  let timeLeft = 30;
 
   const statusEl = document.getElementById("status");
   const startBtn = document.getElementById("startButton");
@@ -48,7 +39,57 @@ const comboSets = {
   const modal = document.getElementById("confirmModal");
   const confirmBtn = document.getElementById("confirmStop");
   const cancelBtn = document.getElementById("cancelStop");
+
   let modalTimeout = null;
+
+  function startTimer() {
+    clearInterval(timerInterval);
+
+    const circle = document.querySelector("#roundTimer .fg");
+    const text = document.querySelector("#roundTimer .timer-text");
+
+    if (!circle || !text) {
+      console.warn("Timer SVG elements not found.");
+      return;
+    }
+
+    timeLeft = 30;
+    circle.style.strokeDashoffset = 0;
+    text.textContent = "30";
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      const offset = 1 - timeLeft / 30;
+      circle.style.strokeDashoffset = offset;
+      text.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+      }
+    }, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+    const circle = document.querySelector("#roundTimer .fg");
+    const text = document.querySelector("#roundTimer .timer-text");
+    circle.style.strokeDashoffset = 1;
+    text.textContent = "--";
+  }
+
+  function updateComboList(index = -1) {
+    const listEl = document.getElementById("comboList");
+    listEl.innerHTML = "";
+
+    if (!selectedSetKey) return;
+    const combos = comboSets[selectedSetKey];
+
+    combos.forEach((line, i) => {
+      const div = document.createElement("div");
+      div.textContent = `• ${line}`;
+      div.className = "combo-line" + (i === index ? " active-line" : "");
+      listEl.appendChild(div);
+    });
+  }
 
   function loadVoices() {
     availableVoices = speechSynthesis.getVoices();
@@ -128,10 +169,12 @@ const comboSets = {
 
     const line = combos[index];
     statusEl.textContent = `Combo ${index + 1}: ${line}`;
+    updateComboList(index);
+    startTimer();
 
+    // Highlight card
     const allButtons = document.querySelectorAll("#comboSelector button");
     allButtons.forEach((btn) => btn.classList.remove("active"));
-
     const selectedButton = Array.from(allButtons).find(
       (btn) => btn.textContent.trim() === selectedSetKey
     );
@@ -161,9 +204,11 @@ const comboSets = {
 
       playComboTwice(currentIndex, function next() {
         currentIndex++;
-        setTimeout(() => {
-          if (drillRunning) playComboTwice(currentIndex, next);
-        }, 30000);
+        if (drillRunning) {
+          setTimeout(() => {
+            playComboTwice(currentIndex, next);
+          }, 30000);
+        }
       });
     });
   }
@@ -176,6 +221,8 @@ const comboSets = {
     currentIndex = 0;
     startBtn.textContent = "Start Drill";
     statusEl.textContent = "Drill stopped.";
+    stopTimer();
+    updateComboList(-1);
   }
 
   // UI Initialization
