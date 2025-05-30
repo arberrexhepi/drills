@@ -1,5 +1,6 @@
 window.onload = () => {
-   for (let i = 1; i < 99999; i++) window.clearInterval(i);
+   
+  for (let i = 1; i < 99999; i++) window.clearInterval(i);
 
   const comboSets = {
     "Jeet Kune Do + Muay Thai Hybrid": [
@@ -89,6 +90,18 @@ window.onload = () => {
     speechSynthesis.speak(utterance);
   }
 
+  function lockCards() {
+    document.querySelectorAll("#comboSelector button").forEach((btn) => {
+      btn.classList.add("locked");
+    });
+  }
+
+  function unlockCards() {
+    document.querySelectorAll("#comboSelector button").forEach((btn) => {
+      btn.classList.remove("locked", "active");
+    });
+  }
+
   function playComboTwice(index, callback) {
     const combos = comboSets[selectedSetKey];
     if (index >= combos.length) {
@@ -99,6 +112,15 @@ window.onload = () => {
 
     const line = combos[index];
     statusEl.textContent = `Combo ${index + 1}: ${line}`;
+
+    const allButtons = document.querySelectorAll("#comboSelector button");
+    allButtons.forEach((btn) => btn.classList.remove("active"));
+
+    const selectedButton = Array.from(allButtons).find(
+      (btn) => btn.textContent.trim() === selectedSetKey
+    );
+    if (selectedButton) selectedButton.classList.add("active");
+
     beepSound();
     setTimeout(() => {
       speak(line, () => {
@@ -118,7 +140,9 @@ window.onload = () => {
     ensureVoiceReady(() => {
       currentIndex = 0;
       drillRunning = true;
+      lockCards();
       startBtn.textContent = "Stop Drill";
+
       playComboTwice(currentIndex, function next() {
         currentIndex++;
         setTimeout(() => {
@@ -132,6 +156,7 @@ window.onload = () => {
     drillRunning = false;
     clearInterval(interval);
     speechSynthesis.cancel();
+    unlockCards();
     currentIndex = 0;
     startBtn.textContent = "Start Drill";
     statusEl.textContent = "Drill stopped.";
