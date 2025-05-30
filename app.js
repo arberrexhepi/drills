@@ -1,46 +1,48 @@
 window.onload = () => {
    for (let i = 1; i < 99999; i++) window.clearInterval(i);
 
-  const combos = [
-    "Start with a Jeet Kune Do lead straight to intercept your opponent’s advance. Follow it immediately with a powerful Muay Thai roundhouse kick. Stay sharp, in and out.",
-    "Use a flick jab to test their guard, then land a clean cross. As they react, chop their lead leg with a Muay Thai low kick. Jab, cross, low kick.",
-    "Trap their lead hand briefly, clearing the line. Now step in with a horizontal elbow, then enter the Muay Thai clinch. Control their posture and get ready to knee.",
-    "Feint the lead hand to draw a reaction. Step outside the line and throw a switch kick to the body. Land and angle out.",
-    "Throw a Jeet Kune Do stop kick to their thigh as they step forward. Now close the gap with a diagonal elbow, and reset your stance.",
-    "Final push. Jab, cross. Quick step to the side. Teep kick to create distance. Stay mobile, jab, cross, angle, teep.",
-  ];
+  const comboSets = {
+    "Jeet Kune Do + Muay Thai Hybrid": [
+      "Start with a Jeet Kune Do lead straight to intercept your opponent’s advance. Follow it immediately with a powerful Muay Thai roundhouse kick. Stay sharp, in and out.",
+      "Use a flick jab to test their guard, then land a clean cross. As they react, chop their lead leg with a Muay Thai low kick. Jab, cross, low kick.",
+      "Trap their lead hand briefly, clearing the line. Now step in with a horizontal elbow, then enter the Muay Thai clinch. Control their posture and get ready to knee.",
+      "Feint the lead hand to draw a reaction. Step outside the line and throw a switch kick to the body. Land and angle out.",
+      "Throw a Jeet Kune Do stop kick to their thigh as they step forward. Now close the gap with a diagonal elbow, and reset your stance.",
+      "Final push. Jab, cross. Quick step to the side. Teep kick to create distance. Stay mobile, jab, cross, angle, teep.",
+    ],
+    "Boxing Fundamentals": [
+      "Start with a double jab followed by a right cross.",
+      "Slip to the outside and return with a hook to the body.",
+      "Duck under and counter with a shovel uppercut.",
+    ],
+    "Taekwondo Precision Kicks": [
+      "Chamber and snap a fast front kick.",
+      "Follow up with a spinning hook kick to the head.",
+      "Reset and throw a fast axe kick, then step off line.",
+    ],
+  };
 
+  let selectedSetKey = null;
   let interval = null;
   let currentIndex = 0;
   let drillRunning = false;
   let availableVoices = [];
   let selectedVoice = null;
 
+  const statusEl = document.getElementById("status");
+  const startBtn = document.getElementById("startButton");
+  const selectorEl = document.getElementById("comboSelector");
+
   function loadVoices() {
     availableVoices = speechSynthesis.getVoices();
-
     if (availableVoices.length) {
-      // Try to get best natural voice first
-      const preferredVoiceNames = [
-        "Google US English",
-        "Google UK English Female",
-        "Google UK English Male",
-        "Samantha",
-        "Alex",
-        "Daniel",
-        "Karen",
-      ];
-
+      const preferred = ["Google US English", "Samantha", "Alex"];
       selectedVoice =
-        preferredVoiceNames
+        preferred
           .map((name) => availableVoices.find((v) => v.name === name))
           .find(Boolean) ||
         availableVoices.find((v) => v.lang.startsWith("en")) ||
         availableVoices[0];
-
-      console.log("[Voice] Selected:", selectedVoice.name);
-    } else {
-      console.warn("[Voice] No voices available yet. Waiting...");
     }
   }
 
@@ -60,118 +62,99 @@ window.onload = () => {
   }
 
   function beepSound() {
-    console.log("[Beep] Triggered");
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = ctx.createOscillator();
-      oscillator.type = "sine";
-      oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
-      oscillator.connect(ctx.destination);
-      oscillator.start();
-      oscillator.stop(ctx.currentTime + 0.3);
+      const osc = ctx.createOscillator();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(1000, ctx.currentTime);
+      osc.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.3);
     } catch (err) {
-      console.warn("[Beep] AudioContext error:", err);
+      console.warn("[Beep] Error:", err);
     }
   }
 
-  function speak(text, onEndCallback) {
+  function speak(text, onDone) {
     if (!selectedVoice) {
-      console.warn("[Speak] No voice available yet. Skipping speech.");
-      if (onEndCallback) onEndCallback();
+      if (onDone) onDone();
       return;
     }
-
-    console.log("[Speak] Speaking:", text);
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = selectedVoice;
     utterance.lang = selectedVoice.lang;
     utterance.rate = 1;
-
-    utterance.onend = () => {
-      console.log("[Speak] Speech ended");
-      if (onEndCallback) onEndCallback();
-    };
-
-    utterance.onerror = (e) => {
-      console.error("[Speak] Speech error:", e);
-      if (onEndCallback) onEndCallback();
-    };
-
+    utterance.onend = () => onDone && onDone();
+    utterance.onerror = () => onDone && onDone();
     speechSynthesis.speak(utterance);
   }
 
   function playComboTwice(index, callback) {
+    const combos = comboSets[selectedSetKey];
     if (index >= combos.length) {
-      console.log("[Drill] All combos complete");
       stopDrill();
-      document.getElementById("status").textContent =
-        "Drill complete! Great job!";
+      statusEl.textContent = "Drill complete! Great job!";
       return;
     }
 
-    const combo = combos[index];
-    console.log(`[Drill] Combo ${index + 1} of ${combos.length}`);
-    document.getElementById("status").textContent = `Combo ${
-      index + 1
-    }: ${combo}`;
-
+    const line = combos[index];
+    statusEl.textContent = `Combo ${index + 1}: ${line}`;
     beepSound();
     setTimeout(() => {
-      speak(combo, () => {
+      speak(line, () => {
         setTimeout(() => {
-          speak("Again for this drill. " + combo, () => {
-            if (callback) callback();
-          });
-        }, 500); // pause between repetitions
+          speak("Again for this drill. " + line, () => callback && callback());
+        }, 500);
       });
-    }, 500); // pause after beep
+    }, 500);
   }
 
   function startDrill() {
+    if (!selectedSetKey) {
+      alert("Please select a combo set first.");
+      return;
+    }
+
     ensureVoiceReady(() => {
-      console.log("[Drill] Starting");
-      document.getElementById("status").textContent =
-        "Drill started. Listen closely!";
-      document.getElementById("startButton").textContent = "Stop Drill";
-      drillRunning = true;
-
       currentIndex = 0;
-
-      const scheduleNext = () => {
-        if (!drillRunning || currentIndex >= combos.length) return;
-        playComboTwice(currentIndex, () => {
-          currentIndex++;
-          setTimeout(scheduleNext, 30000); // delay until next drill
-        });
-      };
-
-      // 🔥 Start with the first combo immediately
-      scheduleNext();
+      drillRunning = true;
+      startBtn.textContent = "Stop Drill";
+      playComboTwice(currentIndex, function next() {
+        currentIndex++;
+        setTimeout(() => {
+          if (drillRunning) playComboTwice(currentIndex, next);
+        }, 30000);
+      });
     });
   }
 
   function stopDrill() {
-    console.log("[Drill] Stopping");
+    drillRunning = false;
     clearInterval(interval);
     speechSynthesis.cancel();
-    document.getElementById("status").textContent = "Drill stopped.";
-    document.getElementById("startButton").textContent = "Start Drill";
     currentIndex = 0;
-    drillRunning = false;
+    startBtn.textContent = "Start Drill";
+    statusEl.textContent = "Drill stopped.";
   }
 
-  window.addEventListener("click", () => {
-    console.log("[Init] User interaction detected – warming up TTS");
-    speechSynthesis.cancel();
-    loadVoices();
+  // UI Initialization
+  Object.keys(comboSets).forEach((key) => {
+    const card = document.createElement("button");
+    card.className =
+      "bg-white border hover:shadow-lg p-4 rounded-xl text-left transition-all";
+    card.textContent = key;
+    card.addEventListener("click", () => {
+      selectedSetKey = key;
+      document.querySelectorAll("#comboSelector button").forEach((btn) => {
+        btn.classList.remove("selected");
+      });
+      card.classList.add("selected");
+      statusEl.textContent = `Selected: ${key}`;
+    });
+    selectorEl.appendChild(card);
   });
 
-  window.speechSynthesis.onvoiceschanged = () => {
-    console.log("[Voice] voiceschanged event fired");
-    loadVoices();
-  };
-
-  document.getElementById("startButton").addEventListener("click", () => {
+  startBtn.addEventListener("click", () => {
     if (!drillRunning) {
       startDrill();
     } else {
@@ -179,5 +162,12 @@ window.onload = () => {
     }
   });
 
-  console.log("[Init] Drill system ready. Waiting for interaction...");
+  window.addEventListener("click", () => {
+    speechSynthesis.cancel();
+    loadVoices();
+  });
+
+  window.speechSynthesis.onvoiceschanged = () => {
+    loadVoices();
+  };
 };
