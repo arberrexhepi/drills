@@ -1,39 +1,199 @@
+/* Layout Basics */
+/* body {
+    font-family: sans-serif;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: #f0f2f5;
+} */
+
+#ui-canvas {
+    flex: 1;
+    border: 2px dashed #bbb;
+    padding: 10px;
+    min-height: 400px;
+    background: #fff;
+    overflow: auto;
+}
+
+/* View Containers */
+/* .view {
+    border: 1px solid #aaa;
+    margin: 10px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    position: relative;
+} */
+
+/* Components (Wrappers/Elements) */
+.component {
+    border: 1px solid #333;
+    background-color: #e0e0e0;
+    margin: 8px 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.component:hover {
+    background-color: #d3d3d3;
+}
+
+/* Children Inside Components */
+.child {
+    margin-top: 6px;
+    padding: 6px;
+    background: #dfe6e9;
+    border: 1px dashed #888;
+    font-size: 0.9em;
+}
+
+/* Inspector Panel */
+#inspector-panel {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    background: #fafafa;
+    height: fit-content;
+}
+
+#inspector-panel h3 {
+    margin-top: 0;
+}
+
+#inspector-panel input {
+    width: 100%;
+    padding: 6px;
+    margin-top: 6px;
+    box-sizing: border-box;
+}
+
+/* Modal for Naming */
+.naming-modal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 2px solid #444;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 9999;
+}
+
+.naming-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.naming-modal input {
+    margin: 10px 0;
+    padding: 6px;
+}
+
+.naming-modal button {
+    padding: 6px;
+}
+
+/* Tool Buttons */
+button {
+    padding: 8px 12px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+textarea#importArea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    resize: vertical;
+}
+
+
+/* drills test */
+
 body {
-  font-family: 'Segoe UI£ sans-serif;
-  background: #0d0d0d;
-  color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-  text-align: center;
-  max-width: 600px;
-  padding: 20px;
-  background: #1a1a1a;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+    max-width: 720px;
+    margin: auto;
 }
 
-button {
-  background: #ff6600;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
 }
 
-button:hover {
-  background: #cc5200;
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
-#status {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #ccc;
+.card-container button {
+    background: white;
+    border: 2px solid transparent;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+    min-height: 80px;
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+}
+
+.card-container button:hover {
+    border-color: #999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-container button.selected {
+    border-color: #007bff;
+    background-color: #eaf3ff;
+    color: #0056b3;
+    box-shadow: 0 0 0 2px #007bff88;
+}
+
+.control-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.status {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.start-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.start-button:hover {
+    background: #0056b3;
+}
+
+.card-container button {
+    font-weight: bold;
 }
