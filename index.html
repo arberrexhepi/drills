@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
+        <div class="container">
         <h1>Drill Trainer</h1>
 
         <div id="comboSelector" class="card-container">
@@ -16,6 +16,15 @@
         <div class="control-panel">
             <div id="status" class="status">Select a combo set to begin</div>
             <button id="startButton" class="start-button">Start Drill</button>
+        </div>
+    </div>
+    <div id="confirmModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <p>Are you sure you want to stop the drill?</p>
+            <div class="modal-buttons">
+                <button id="confirmStop" class="modal-confirm">Yes, stop</button>
+                <button id="cancelStop" class="modal-cancel">Cancel</button>
+            </div>
         </div>
     </div>
   <script src="app.js"></script>
