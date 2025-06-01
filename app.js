@@ -3,26 +3,57 @@ window.onload = () => {
 
   for (let i = 1; i < 99999; i++) window.clearInterval(i);
 
-  const comboSets = {
-    "Jeet Kune Do + Muay Thai Hybrid": [
-      "Start with a Jeet Kune Do lead straight to intercept your opponent’s advance. Follow it immediately with a powerful Muay Thai roundhouse kick. Stay sharp, in and out.",
-      "Use a flick jab to test their guard, then land a clean cross. As they react, chop their lead leg with a Muay Thai low kick. Jab, cross, low kick.",
-      "Trap their lead hand briefly, clearing the line. Now step in with a horizontal elbow, then enter the Muay Thai clinch. Control their posture and get ready to knee.",
-      "Feint the lead hand to draw a reaction. Step outside the line and throw a switch kick to the body. Land and angle out.",
-      "Throw a Jeet Kune Do stop kick to their thigh as they step forward. Now close the gap with a diagonal elbow, and reset your stance.",
-      "Final push. Jab, cross. Quick step to the side. Teep kick to create distance. Stay mobile, jab, cross, angle, teep.",
-    ],
-    "Boxing Fundamentals": [
-      "Start with a double jab followed by a right cross.",
-      "Slip to the outside and return with a hook to the body.",
-      "Duck under and counter with a shovel uppercut.",
-    ],
-    "Taekwondo Precision Kicks": [
-      "Chamber and snap a fast front kick.",
-      "Follow up with a spinning hook kick to the head.",
-      "Reset and throw a fast axe kick, then step off line.",
-    ],
-  };
+const comboSets = {
+  "Muay Thai – Attack (5 Methods of JKD)": [
+    // SDA – Single Direct Attack
+    "Start with a Jeet Kune Do lead straight to intercept. Immediately follow up with a Muay Thai roundhouse. Enter, strike, exit clean.",
+    
+    // ABC – Attack By Combination
+    "Jab to flick jab, then cross. As they react, hammer the lead leg with a low kick. Jab, cross, low kick.",
+    
+    // HIA – Hand Immobilization Attack
+    "Simulate trapping their lead hand (touch or pin the bag), then fire a horizontal elbow. Clinch and deliver two strong knees.",
+    
+    // PIA – Progressive Indirect Attack
+    "Feint a low kick to shift their weight. Switch kick to the body as they adjust. Reset and pivot out.",
+    
+    // ABD – Attack By Drawing
+    "Step back and lower your guard slightly to draw them in. Fire a teep to the midline, then cross and follow with a diagonal elbow.",
+  ],
+
+  "Muay Thai – Defence": [
+    "Check an imaginary kick with your lead shin, then return immediately with a cross and a low kick.",
+    "Parry the incoming jab, counter with a lead hook, then teep the bag to regain space.",
+    "Slip outside the centerline and throw a fast rear uppercut. Angle out and stay light.",
+    "Catch and scoop the imagined kick. Slam a rear low kick to finish the exchange.",
+    "Cover and shell against pressure. Explode with a lead elbow and step off at an angle."
+  ],
+
+  "Muay Thai – Footwork & Mobility": [
+    "Circle left while peppering the bag with jabs. On the third jab, drop a low kick, then continue circling.",
+    "Step in with jab, jab. Retreat with a teep. Control the centerline and range.",
+    "Pendulum step in with jab-cross. Pendulum out with a switch teep to reset distance.",
+    "Step diagonally offline, land a cross to the bag's side. Follow with a switch kick, then reset.",
+    "Angle right with a jab, step left into a hook. Stay light and mobile—bag centered, feet active."
+  ],
+
+"Boxing Fundamentals": [
+  "Double jab to measure distance. Fire a sharp cross down the center. Keep your head moving between shots.",
+  "Slip outside the bag's line and dig a hook to the body. Rise with a cross. Reset with light footwork.",
+  "Duck under as if avoiding a hook. Come up with a rear shovel uppercut. Follow with a lead hook to the head.",
+  "Jab to the head, jab to the body, cross upstairs. Mix your levels to confuse and break the guard.",
+  "Roll under a punch, step in, and throw a compact 3-punch combo: hook–cross–hook. Maintain tight form and balance."
+],
+
+"Taekwondo Precision Kicks": [
+  "Chamber high and snap a lightning-fast front kick to the bag’s core. Keep posture upright and recover clean.",
+  "Spin into a tight hook kick, striking with the heel at eye level. Reset with a pivot or bounce back.",
+  "Fire an axe kick straight down onto the bag. Imagine striking collarbone-level. Step off line after impact.",
+  "Lead with a side kick to the ribs. Full chamber, then extend with control and recoil. Stay bladed.",
+  "Feint low, then leap into a jumping roundhouse kick. Land soft and square up immediately. Flashy but controlled."
+],
+};
+
 
   let selectedSetKey = null;
   let interval = null;
