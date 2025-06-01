@@ -287,6 +287,7 @@ const comboSets = {
       });
       card.classList.add("selected");
       statusEl.textContent = `Selected: ${key}`;
+       updateComboList();
     });
     selectorEl.appendChild(card);
   });
