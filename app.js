@@ -45,6 +45,23 @@ const comboSets = {
   "Roll under a punch, step in, and throw a compact 3-punch combo: hook–cross–hook. Maintain tight form and balance."
 ],
 
+   "Boxing Fundamentals 2": [
+  // 1. Single Direct Attack (SDA)
+  "Step into range and land a sharp, committed cross down the pipe. One strike, full intent. Reset immediately.",
+  
+  // 2. Attack By Combination (ABC)
+  "Jab to the head, jab to the body, rise with a rear uppercut, then finish with a lead hook. Flow seamlessly through each shot.",
+  
+  // 3. Hand Immobilization Attack (HIA)
+  "Simulate pinning or framing the guard with your lead hand, then fire a short-range rear straight. Follow with a clinch-entry elbow or frame off.",
+  
+  // 4. Progressive Indirect Attack (PIA)
+  "Feint a jab to the head, then throw a lead hook to the body. Rise with a rear hook to the head. Use rhythm breaks to open the guard.",
+  
+  // 5. Attack by Drawing (ABD)
+  "Drop your level and posture slightly to bait a counter. As the bag swings in, step off line and counter with a jab–cross–pivot out. Make them chase shadows."
+],
+
 "Taekwondo Precision Kicks": [
   "Chamber high and snap a lightning-fast front kick to the bag’s core. Keep posture upright and recover clean.",
   "Spin into a tight hook kick, striking with the heel at eye level. Reset with a pivot or bounce back.",
