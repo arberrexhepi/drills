@@ -1,0 +1,248 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "name": "Muay Thai – Attack (5 Methods of JKD)",
+    "drills": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440001",
+        "title": "SDA – Single Direct Attack",
+        "description": "Start with a Jeet Kune Do lead straight to intercept. Immediately follow up with a Muay Thai roundhouse. Enter, strike, exit clean.",
+        "category": "Muay Thai – Attack (5 Methods of JKD)",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440002",
+        "title": "ABC – Attack By Combination",
+        "description": "Jab to flick jab, then cross. As they react, hammer the lead leg with a low kick. Jab, cross, low kick.",
+        "category": "Muay Thai – Attack (5 Methods of JKD)",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440003",
+        "title": "HIA – Hand Immobilization Attack",
+        "description": "Simulate trapping their lead hand (touch or pin the bag), then fire a horizontal elbow. Clinch and deliver two strong knees.",
+        "category": "Muay Thai – Attack (5 Methods of JKD)",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440004",
+        "title": "PIA – Progressive Indirect Attack",
+        "description": "Feint a low kick to shift their weight. Switch kick to the body as they adjust. Reset and pivot out.",
+        "category": "Muay Thai – Attack (5 Methods of JKD)",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440005",
+        "title": "ABD – Attack By Drawing",
+        "description": "Step back and lower your guard slightly to draw them in. Fire a teep to the midline, then cross and follow with a diagonal elbow.",
+        "category": "Muay Thai – Attack (5 Methods of JKD)",
+        "duration": 30
+      }
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440006",
+    "name": "Muay Thai – Defence",
+    "drills": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440007",
+        "title": "Lead Shin Check",
+        "description": "Check an imaginary kick with your lead shin, then return immediately with a cross and a low kick.",
+        "category": "Muay Thai – Defence",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440008",
+        "title": "Jab Parry & Counter",
+        "description": "Parry the incoming jab, counter with a lead hook, then teep the bag to regain space.",
+        "category": "Muay Thai – Defence",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440012",
+        "title": "Slip & Uppercut",
+        "description": "Slip outside the centerline and throw a fast rear uppercut. Angle out and stay light.",
+        "category": "Muay Thai – Defence",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440013",
+        "title": "Catch & Scoop",
+        "description": "Catch and scoop the imagined kick. Slam a rear low kick to finish the exchange.",
+        "category": "Muay Thai – Defence",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440014",
+        "title": "Cover & Elbow",
+        "description": "Cover and shell against pressure. Explode with a lead elbow and step off at an angle.",
+        "category": "Muay Thai – Defence",
+        "duration": 30
+      }
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440015",
+    "name": "Muay Thai – Footwork & Mobility",
+    "drills": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440016",
+        "title": "Circle & Low Kick",
+        "description": "Circle left while peppering the bag with jabs. On the third jab, drop a low kick, then continue circling.",
+        "category": "Muay Thai – Footwork & Mobility",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440017",
+        "title": "In & Out Teep",
+        "description": "Step in with jab, jab. Retreat with a teep. Control the centerline and range.",
+        "category": "Muay Thai – Footwork & Mobility",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440018",
+        "title": "Pendulum Step",
+        "description": "Pendulum step in with jab-cross. Pendulum out with a switch teep to reset distance.",
+        "category": "Muay Thai – Footwork & Mobility",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440019",
+        "title": "Diagonal Step",
+        "description": "Step diagonally offline, land a cross to the bag's side. Follow with a switch kick, then reset.",
+        "category": "Muay Thai – Footwork & Mobility",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440020",
+        "title": "Angle & Hook",
+        "description": "Angle right with a jab, step left into a hook. Stay light and mobile—bag centered, feet active.",
+        "category": "Muay Thai – Footwork & Mobility",
+        "duration": 30
+      }
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440009",
+    "name": "Boxing Fundamentals",
+    "drills": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440010",
+        "title": "Double Jab Cross",
+        "description": "Double jab to measure distance. Fire a sharp cross down the center. Keep your head moving between shots.",
+        "category": "Boxing Fundamentals",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440011",
+        "title": "Slip & Body Hook",
+        "description": "Slip outside the bag's line and dig a hook to the body. Rise with a cross. Reset with light footwork.",
+        "category": "Boxing Fundamentals",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440021",
+        "title": "Duck & Uppercut",
+        "description": "Duck under as if avoiding a hook. Come up with a rear shovel uppercut. Follow with a lead hook to the head.",
+        "category": "Boxing Fundamentals",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440022",
+        "title": "Level Change Combo",
+        "description": "Jab to the head, jab to the body, cross upstairs. Mix your levels to confuse and break the guard.",
+        "category": "Boxing Fundamentals",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440023",
+        "title": "Roll & Hook-Cross-Hook",
+        "description": "Roll under a punch, step in, and throw a compact 3-punch combo: hook–cross–hook. Maintain tight form and balance.",
+        "category": "Boxing Fundamentals",
+        "duration": 30
+      }
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440024",
+    "name": "Boxing Fundamentals 2",
+    "drills": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440025",
+        "title": "SDA – Single Direct Attack",
+        "description": "Step into range and land a sharp, committed cross down the pipe. One strike, full intent. Reset immediately.",
+        "category": "Boxing Fundamentals 2",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440026",
+        "title": "ABC – Attack By Combination",
+        "description": "Jab to the head, jab to the body, rise with a rear uppercut, then finish with a lead hook. Flow seamlessly through each shot.",
+        "category": "Boxing Fundamentals 2",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440027",
+        "title": "HIA – Hand Immobilization Attack",
+        "description": "Simulate pinning or framing the guard with your lead hand, then fire a short-range rear straight. Follow with a clinch-entry elbow or frame off.",
+        "category": "Boxing Fundamentals 2",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440028",
+        "title": "PIA – Progressive Indirect Attack",
+        "description": "Feint a jab to the head, then throw a lead hook to the body. Rise with a rear hook to the head. Use rhythm breaks to open the guard.",
+        "category": "Boxing Fundamentals 2",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440029",
+        "title": "ABD – Attack by Drawing",
+        "description": "Drop your level and posture slightly to bait a counter. As the bag swings in, step off line and counter with a jab–cross–pivot out. Make them chase shadows.",
+        "category": "Boxing Fundamentals 2",
+        "duration": 30
+      }
+    ]
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440030",
+    "name": "Taekwondo Precision Kicks",
+    "drills": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440031",
+        "title": "Front Kick Snap",
+        "description": "Chamber high and snap a lightning-fast front kick to the bag’s core. Keep posture upright and recover clean.",
+        "category": "Taekwondo Precision Kicks",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440032",
+        "title": "Spinning Hook Kick",
+        "description": "Spin into a tight hook kick, striking with the heel at eye level. Reset with a pivot or bounce back.",
+        "category": "Taekwondo Precision Kicks",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440033",
+        "title": "Axe Kick",
+        "description": "Fire an axe kick straight down onto the bag. Imagine striking collarbone-level. Step off line after impact.",
+        "category": "Taekwondo Precision Kicks",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440034",
+        "title": "Side Kick Rib Strike",
+        "description": "Lead with a side kick to the ribs. Full chamber, then extend with control and recoil. Stay bladed.",
+        "category": "Taekwondo Precision Kicks",
+        "duration": 30
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440035",
+        "title": "Jumping Roundhouse",
+        "description": "Feint low, then leap into a jumping roundhouse kick. Land soft and square up immediately. Flashy but controlled.",
+        "category": "Taekwondo Precision Kicks",
+        "duration": 30
+      }
+    ]
+  }
+]
